@@ -22,6 +22,7 @@ Swift에서는 타입을 명시하지 않아도 컴파일러가 알아서 타입
 var str = "Hello, playground"
 ```
 라고 하면 이것의 타입이 String으로 추론된다.
+
 ![](TypeInfer.png)
 
 물론 타입의 명시도 가능하다.
