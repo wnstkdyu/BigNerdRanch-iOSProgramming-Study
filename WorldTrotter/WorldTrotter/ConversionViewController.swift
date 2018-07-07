@@ -33,10 +33,24 @@ class ConversionViewController: UIViewController {
         return formatter
     }()
     
+    let backgroundColors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .clear]
+    var currentColorIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("ConversionViewController loaded its view.")
+        
         updateCelsiusLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        currentColorIndex = currentColorIndex % backgroundColors.count
+        view.backgroundColor = backgroundColors[currentColorIndex]
+        
+        currentColorIndex += 1
     }
     
     @IBAction func fahrenheitFieldEditingChanged(_ textField: UITextField) {
