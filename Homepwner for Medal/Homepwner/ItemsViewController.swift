@@ -29,47 +29,23 @@ class ItemsViewController: UITableViewController {
 }
 
 extension ItemsViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let itemStore = itemStore else { return 0 }
-        let cellCount: Int
-        switch section {
-        case 0:
-            cellCount = itemStore.expensiveItems.count
-        case 1:
-            cellCount = itemStore.cheapItems.count
-        default:
-            cellCount = 0
+        guard let itemStore = itemStore else {
+            return 0
         }
         
-        return cellCount
+        return itemStore.allItems.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        guard indexPath.row < (itemStore?.allItems.count)! else {
+        guard indexPath.row != itemStore?.allItems.count else {
             cell.textLabel?.text = noMoreItemsString
             
             return cell
         }
         
-        let item: Item?
-        switch indexPath.section {
-        case 0:
-            item = itemStore?.expensiveItems[indexPath.row]
-        case 1:
-            item = itemStore?.cheapItems[indexPath.row]
-        default:
-            item = nil
-        }
+        let item = itemStore?.allItems[indexPath.row]
         
         cell.textLabel?.text = item?.name
         cell.detailTextLabel?.text = "$\(item?.valueInDollars ?? 0)"
