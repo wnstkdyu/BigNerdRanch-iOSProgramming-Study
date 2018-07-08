@@ -25,6 +25,15 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        displayBackgroundImage()
+    }
+    
+    func displayBackgroundImage() {
+        let image: UIImage = #imageLiteral(resourceName: "MapIcon")
+        let imageView: UIImageView = UIImageView(image: image)
+        
+        tableView.backgroundView = imageView
     }
 }
 
@@ -51,5 +60,13 @@ extension ItemsViewController {
         cell.detailTextLabel?.text = "$\(item?.valueInDollars ?? 0)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath.row != itemStore?.allItems.count else {
+            return 44
+        }
+        
+        return 60
     }
 }
