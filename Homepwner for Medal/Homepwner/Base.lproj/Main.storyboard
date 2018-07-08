@@ -43,6 +43,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="si4-Su-dlW" id="hvc-Dp-QgO"/>
                             <outlet property="delegate" destination="si4-Su-dlW" id="gpA-tW-2Kq"/>

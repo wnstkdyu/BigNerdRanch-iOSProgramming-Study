@@ -12,6 +12,13 @@ class ItemStore {
     
     var allItems: [Item] = []
     
+    var expensiveItems: [Item] {
+        return allItems.filter { $0.valueInDollars > 50 }
+    }
+    var cheapItems: [Item] {
+        return allItems.filter { $0.valueInDollars <= 50 }
+    }
+
     init() {
         for _ in 0..<5 {
             createItem()
