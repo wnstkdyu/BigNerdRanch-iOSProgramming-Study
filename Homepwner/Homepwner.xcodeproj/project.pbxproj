@@ -16,6 +16,9 @@
 		7D8F489220F1F2D80063D1CC /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F489120F1F2D80063D1CC /* ItemsViewController.swift */; };
 		7D8F489420F1F32D0063D1CC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F489320F1F32D0063D1CC /* Item.swift */; };
 		7D8F489620F1F50B0063D1CC /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F489520F1F50B0063D1CC /* ItemStore.swift */; };
+		7D8F48B820F35A7E0063D1CC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F48B720F35A7E0063D1CC /* DetailViewController.swift */; };
+		7D8F48BB20F3B3930063D1CC /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F48BA20F3B3930063D1CC /* MyTextField.swift */; };
+		7D8F48BD20F3B52B0063D1CC /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8F48BC20F3B52B0063D1CC /* DatePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		7D8F489120F1F2D80063D1CC /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		7D8F489320F1F32D0063D1CC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7D8F489520F1F50B0063D1CC /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		7D8F48B720F35A7E0063D1CC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		7D8F48BA20F3B3930063D1CC /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		7D8F48BC20F3B52B0063D1CC /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				7D8F486320F1F20F0063D1CC /* AppDelegate.swift */,
-				7D8F489120F1F2D80063D1CC /* ItemsViewController.swift */,
-				7D8F489320F1F32D0063D1CC /* Item.swift */,
-				7D8F489520F1F50B0063D1CC /* ItemStore.swift */,
+				7D8F48B520F35A580063D1CC /* Model */,
+				7D8F48B620F35A630063D1CC /* Controller */,
+				7D8F48B920F3B37E0063D1CC /* View */,
 				7D8F486720F1F20F0063D1CC /* Main.storyboard */,
 				7D8F486A20F1F2110063D1CC /* Assets.xcassets */,
 				7D8F486C20F1F2110063D1CC /* LaunchScreen.storyboard */,
@@ -129,6 +135,33 @@
 				7D8F488520F1F2110063D1CC /* Info.plist */,
 			);
 			path = HomepwnerUITests;
+			sourceTree = "<group>";
+		};
+		7D8F48B520F35A580063D1CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D8F489320F1F32D0063D1CC /* Item.swift */,
+				7D8F489520F1F50B0063D1CC /* ItemStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D8F48B620F35A630063D1CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7D8F489120F1F2D80063D1CC /* ItemsViewController.swift */,
+				7D8F48B720F35A7E0063D1CC /* DetailViewController.swift */,
+				7D8F48BC20F3B52B0063D1CC /* DatePickerController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7D8F48B920F3B37E0063D1CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D8F48BA20F3B3930063D1CC /* MyTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +297,9 @@
 			files = (
 				7D8F486420F1F20F0063D1CC /* AppDelegate.swift in Sources */,
 				7D8F489420F1F32D0063D1CC /* Item.swift in Sources */,
+				7D8F48B820F35A7E0063D1CC /* DetailViewController.swift in Sources */,
+				7D8F48BB20F3B3930063D1CC /* MyTextField.swift in Sources */,
+				7D8F48BD20F3B52B0063D1CC /* DatePickerController.swift in Sources */,
 				7D8F489620F1F50B0063D1CC /* ItemStore.swift in Sources */,
 				7D8F489220F1F2D80063D1CC /* ItemsViewController.swift in Sources */,
 			);
