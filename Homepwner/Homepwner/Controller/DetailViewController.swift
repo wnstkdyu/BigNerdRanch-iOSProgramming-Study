@@ -10,9 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var serialNumberTextFied: UITextField!
-    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var nameTextField: MyTextField!
+    @IBOutlet weak var serialNumberTextFied: MyTextField!
+    @IBOutlet weak var valueTextField: MyTextField!
     @IBOutlet weak var dateLabel: UILabel!
     
     var item: Item? {
@@ -34,6 +34,8 @@ class DetailViewController: UIViewController {
         formatter.timeStyle = .none
         return formatter
     }()
+    
+    let segueIdentifier: String = "ShowDatePickerViewController"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,6 +65,18 @@ class DetailViewController: UIViewController {
         item?.valueInDollars = value.intValue
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == segueIdentifier else { return }
+        
+        guard let datePickerController = segue.destination as? DatePickerController else { return }
+        
+        guard let item = item else { return }
+        datePickerController.date = item.dateCreated
+        datePickerController.delegate = self
+    }
+    
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -73,5 +87,11 @@ extension DetailViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         
         return true
+    }
+}
+
+extension DetailViewController: DatePickerControllerDelegate {
+    func dateChanged(to date: Date) {
+        item?.dateCreated = date
     }
 }
