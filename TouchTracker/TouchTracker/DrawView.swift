@@ -126,7 +126,6 @@ class DrawView: UIView {
     
     @objc func longPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         print("Recognized a long press")
-        panGestureRecognizer?.isEnabled = true
         
         switch gestureRecognizer.state {
         case .began:
@@ -158,6 +157,13 @@ class DrawView: UIView {
             finishedLines[index].end.y += translation.y
             
             gestureRecognizer.setTranslation(.zero, in: self)
+            
+            let velocity = gestureRecognizer.velocity(in: self)
+            if velocity.x > 0 {
+                lineThickness = 30
+            } else {
+                lineThickness = 10
+            }
             
             setNeedsDisplay()
         }
@@ -196,7 +202,6 @@ extension DrawView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print(#function)
         selectedLineIndex = nil
-        panGestureRecognizer?.isEnabled = false
         
         for touch in touches {
             let location = touch.location(in: self)
