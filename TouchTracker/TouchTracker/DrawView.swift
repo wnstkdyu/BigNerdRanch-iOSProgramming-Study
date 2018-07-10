@@ -91,12 +91,14 @@ class DrawView: UIView {
     // MARK: Draw
     override func draw(_ rect: CGRect) {
         finishedLineColor.setStroke()
-        for line in finishedLines {
-            stroke(line)
+        if finishedLines.count == 2 {
+            let line1End = finishedLines[0].end
+            let line2End = finishedLines[1].end
+            strokeCircle(line1End, line2End)
+            finishedLines.removeAll()
         }
         
         for line in currentLines.values {
-            line.angle.color.setStroke()
             stroke(line)
         }
     }
@@ -109,6 +111,24 @@ class DrawView: UIView {
         path.move(to: line.begin)
         path.addLine(to: line.end)
         path.stroke()
+    }
+    
+    func strokeCircle(_ line1End: CGPoint, _ line2End: CGPoint) {
+        let arcCenter = CGPoint(x: (line1End.x + line2End.x) / 2, y: (line1End.y + line2End.y) / 2)
+        let radius = sqrt(pow((line1End.x - line2End.x), 2) + pow((line1End.y - line2End.y), 2)) / 2 - lineThickness
+        let circlePath = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        
+        let circleLayer: CAShapeLayer = {
+            let circleLayer = CAShapeLayer()
+            circleLayer.path = circlePath.cgPath
+            circleLayer.lineWidth = lineThickness
+            circleLayer.strokeColor = UIColor.black.cgColor
+            circleLayer.fillColor = UIColor.clear.cgColor
+            
+            return circleLayer
+        }()
+        
+        layer.addSublayer(circleLayer)
     }
 }
 
